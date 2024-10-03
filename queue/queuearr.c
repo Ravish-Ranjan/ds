@@ -64,6 +64,7 @@ int dequeue(){
 }
 
 int main(){
+    printf("----------Queue Arr (ravish)----------\n");
     q = (struct Queue*)malloc(sizeof(struct Queue));
     q->front = -1;
     q->rear = -1;

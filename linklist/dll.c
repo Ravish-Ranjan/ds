@@ -62,6 +62,7 @@ void deleteStart(){
     if (next != NULL)
         next->prev = NULL;
 }
+
 void deleteEnd(){
     if (head == NULL){
         printf("\nUnderflow");

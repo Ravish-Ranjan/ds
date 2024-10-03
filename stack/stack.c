@@ -72,6 +72,7 @@ int size(){
 }
 
 int main(){
+    printf("----------Stack LL (ravish)----------\n");
     stack = (struct Stack*)malloc(sizeof(struct Stack));
     stack->top = NULL;
     print();

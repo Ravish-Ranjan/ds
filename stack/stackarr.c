@@ -56,6 +56,7 @@ int size(){
 }
 
 int main(){
+    printf("----------Stack Arr (ravish)----------\n");
     stack = (struct Stack*)malloc(sizeof(struct Stack));
     stack->top = -1;
     print();
