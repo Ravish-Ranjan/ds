@@ -100,9 +100,13 @@ int deleteEnd(){
 }
 
 int main(){
+    printf("----------Circular LL (ravish)----------\n");
     cursor = NULL;
     print();
-    insertCursor(10);insertCursor(20);print();insertCursor(30);insertCursor(40);
+    insertCursor(10);print();insertCursor(20);print();insertEnd(30);print();insertEnd(40);
     print();
+    deleteCursor();print();deleteCursor();print();deleteEnd();print();deleteEnd();
+    print();
+    deleteCursor();
     return 0;
 }
