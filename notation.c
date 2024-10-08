@@ -45,7 +45,7 @@ int isop(char c) {
     return 0;
 }
 
-void postToPre(char* str, int l) {
+void postToPre(char* str,int l) {
     stack->top = -1;
     for (int i = 0; i < l; i++) {
         if (isalpha(str[i])) {
@@ -65,6 +65,28 @@ void postToPre(char* str, int l) {
         }
     }
 }
+
+void preToPost(char* str,int l) {
+    stack->top = -1;
+    for (int i = l-1; i >= 0; i--) {
+        if (isalpha(str[i])) {
+            char operand[2] = {str[i], '\0'};
+            push(operand);
+        } else if (isop(str[i])) {
+            char* op1 = pop();
+            char* op2 = pop();
+            
+            if (op1 == NULL || op2 == NULL) {
+                printf("Error: Not enough operands.\n");
+                return;
+            }
+            char result[MAX];
+            sprintf(result, "%s%s%c", op1, op2, str[i]);
+            push(result);
+        }
+    }
+}
+
 
 int main() {
     stack = (struct Stack*)malloc(sizeof(struct Stack));
@@ -86,6 +108,11 @@ int main() {
     postToPre(str, length);
 
     char* res = peak();
+    if (res != NULL) {
+        printf("%s\n", res);
+    }
+    preToPost(res,length);
+    res = peak();
     if (res != NULL) {
         printf("%s\n", res);
     }
