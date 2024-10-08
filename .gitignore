@@ -1,4 +1,4 @@
 *.exe
 .vscode
 .dist
-test*.c
+*test*.c
