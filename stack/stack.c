@@ -45,12 +45,6 @@ int pop(){
     return temp;
 }
 
-int isEmpty(){
-    if (stack->top == NULL)
-        return 1;
-    return 0;
-}
-
 int peak(){
     if (stack->top == NULL){
         printf("Empty Stack\n");
