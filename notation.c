@@ -189,7 +189,6 @@ void inToPost(char* str,int l,struct Stack* stack,struct Stack* op){
     }
 }
 
-
 void inToPre(char* str,int l,struct Stack* stack,struct Stack* op){
     stack->top = -1;
     op->top = -1;
@@ -221,7 +220,7 @@ int main() {
 
     struct Stack* opstack = (struct Stack*)malloc(sizeof(struct Stack));
     opstack->top = -1;
-
+    printf("----------Notation ravish----------\n");
     printf("1. Infix\n2. Prefix\n3. Postfix\n");
     int from, to;
     printf("Enter the from and to of conversion\nFrom : ");
@@ -280,5 +279,7 @@ int main() {
             printf("\n%s : %s\n%s : %s",choice[from-1],str,choice[to-1],res);
         }
     }
+    free(stack);
+    free(opstack);
     return 0;
 }
