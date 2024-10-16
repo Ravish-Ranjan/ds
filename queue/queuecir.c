@@ -27,33 +27,45 @@ int isEmpty(){
 };
 
 void print(){
-    printf("Queue : NULL");
+    printf("Queue : ");
     struct Node* cur = q->front;
-    while(cur != NULL){
+    if (cur == NULL){
+        printf("<->NULL\n");
+        return;
+    }
+    while(cur->next != q->front){
         printf("<->%d",cur->value);
         cur = cur->next;
     }
-    printf("<->NULL\n");
+    printf("<->%d<->LOOP\n",cur->value);
 }
 
-void enqueue(int value){
+void enque(int value){
     struct Node* newNode = createNode(value);
     if (isEmpty()){
         q->front = newNode;
+        q->front->next = q->front;
         q->rear = q->front;
     } else {
+        newNode->next = q->front;
         q->rear->next = newNode;
         q->rear = newNode;
     }
 }
 
-int dequeue(){
+int deque(){
     if (isEmpty()){
         printf("Underflow\n");
         return -1;
     }
     int temp = q->front->value;
-    q->front = q->front->next;
+    if (q->front == q->rear){
+        q->front = NULL;
+        q->rear = NULL;
+        return temp;
+    }
+    q->rear->next = q->rear->next->next;
+    q->front = q->rear->next->next;
     return temp;
 };
 
@@ -77,8 +89,8 @@ int size(){
     if (q->front == NULL)
         return 0;
     struct Node* cur = q->front;
-    int count = 0;
-    while(cur != NULL){
+    int count = 1;
+    while(cur->next != q->front){
         count++;
         cur = cur->next;
     }
@@ -86,19 +98,17 @@ int size(){
 };
 
 int main(){
-    printf("----------Queue LL (ravish)----------\n");
+    printf("----------Queue Cir LL (ravish)----------\n");
     q = (struct Queue*)malloc(sizeof(struct Queue));
     q->front = NULL;
     q->rear = NULL;
     print();
-    enqueue(10);enqueue(20);print();
-    enqueue(30);enqueue(40);
+    enque(10);enque(20);print();enque(30);enque(40);
     print();
-    dequeue();dequeue();print();
-    dequeue();dequeue();
+    deque();deque();print();deque();deque();
     print();
-    dequeue();
-    enqueue(100);enqueue(200);
+    deque();
+    enque(100);enque(200);
     print();
     printf("Front : %d\n",front());
     printf("Rear : %d\n",rear());

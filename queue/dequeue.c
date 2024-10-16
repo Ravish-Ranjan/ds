@@ -40,16 +40,24 @@ int rear() {
     return -1;
 }
 
-int isEmpty(){
-    return size() == 0;
+void enqueFront(int value) {
+    if (size() == MAX) {
+        printf("Overflow\n");
+        return;
+    }
+    if (q->front == -1) {
+        q->front = 0;
+        q->rear = 0;
+    } else if (q->front == 0) {
+        q->front = MAX - 1;
+    } else {
+        q->front--;
+    }
+    q->arr[q->front] = value;
 }
 
-int isFull(){
-    return size() == MAX;
-}
-
-void enqueue(int value) {
-    if (isFull()) {
+void enqueRear(int value) {
+    if ((q->rear + 1) % MAX == q->front) {
         printf("Overflow\n");
         return;
     }
@@ -60,8 +68,8 @@ void enqueue(int value) {
     q->arr[q->rear] = value;
 }
 
-int dequeue() {
-    if (isEmpty()) {
+int dequeFront() {
+    if (q->front == -1) {
         printf("Underflow\n");
         return -1;
     }
@@ -74,21 +82,38 @@ int dequeue() {
     return temp;
 }
 
+int dequeRear() {
+    if (size() == 0) {
+        printf("Dequeue is empty!\n");
+        return -1;
+    }
+    int res = rear();
+    if (q->front == q->rear) {
+        q->front = -1;
+        q->rear = -1;
+    } else if (q->rear == 0) {
+        q->rear = MAX - 1;
+    } else {
+        q->rear--;
+    }
+    return res;
+}
+
 int main() {
-    printf("----------Queue Arr Ravish----------\n");
+    printf("----------DeQueue Ravish----------\n");
     q = (struct Queue*)malloc(sizeof(struct Queue));
     q->front = -1;
     q->rear = -1;
 
     print();
-    enqueue(10); enqueue(20); print();
-    enqueue(30); enqueue(40); print();
+    enqueRear(10); enqueRear(20); print();
+    enqueFront(30); enqueFront(40); print();
 
-    dequeue(); dequeue(); print();
-    dequeue(); dequeue(); print();
+    dequeFront(); dequeFront(); print();
+    dequeRear(); dequeRear(); print();
 
-    dequeue();
-    enqueue(100); enqueue(200); print();
+    dequeFront();
+    enqueRear(100); enqueRear(200); print();
 
     printf("Front: %d\n", front());
     printf("Rear: %d\n", rear());
