@@ -1,15 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// * structure for a node
 struct Node{
-    int value;
-    struct Node* next;
+    int value; struct Node* next;
 };
 
 struct Node* head;
 
-// * function to print linked list
 void print(){
     struct Node* cur = head;
     while(cur != NULL){
@@ -19,7 +16,6 @@ void print(){
     printf("Null\n");
 }
 
-// * function to create new node and return it
 struct Node* createNode(int value){
     struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
     newNode->value = value;
@@ -27,7 +23,6 @@ struct Node* createNode(int value){
     return newNode;
 }
 
-// * function to insert new node at end 
 void insertEnd(int value){
     struct Node* newNode = createNode(value);
     struct Node* cur = head;
@@ -37,61 +32,160 @@ void insertEnd(int value){
     cur->next = newNode;
 }
 
-// * function to insert new node in start
 void insertStart(int value){
     struct Node* newNode = createNode(value);
     newNode->next = head;
     head = newNode;
 }
 
-// * function to insert new node at given position 
-// void insertAt(struct Node* head,int value,int at){
+void insertAt(int value,int at){
+    struct Node* newNode = createNode(value);
+    struct Node* cur = head;
+    if (at == 1) {
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+    for (int i = 1; i < at-1; i++){
+        if (cur == NULL){
+            printf("Not enough item");
+            return;
+        }
+        cur = cur->next;
+    }
+    newNode->next = cur->next;
+    cur->next = newNode;
+}
 
-// };
+void insertAfter(int value,int after){
+    struct Node* newNode = createNode(value);
+    struct Node* cur = head;
+    if (cur == NULL) {
+        printf("Not engough items\n");
+        return;
+    }
+    while (cur->value != after){
+        if (cur->next == NULL){
+            printf("No such element found\n");
+            return;
+        }
+        cur = cur->next;
+    }
+    newNode->next = cur->next;
+    cur->next = newNode;
+};
 
-// * function to insert new node after given value
-// void insertAfter(struct Node* head,int value,int after){
+int search(int value){
+    if (head == NULL) {
+        printf("Not enough items\n");
+        return 0;
+    }
+    struct Node* cur = head;
+    while (cur != NULL){
+        if (cur->value == value) return 1;
+        cur = cur->next;
+    }
+    return 0;
+};
 
-// };
+void update(int old_value,int new_value){
+      if (head == NULL) {
+        printf("Not enough items\n");
+        return;
+    }
+    struct Node* cur = head;
+    while (cur != NULL){
+        if (cur->value == old_value) {
+            cur->value = new_value;
+            return;
+        }
+        cur = cur->next;
+    }
+    printf("item not found\n");
+    return;  
+};
 
-// * function to search a node by value
-// int search(struct Node* head,int value){
+void deleteEnd(){
+    if (head == NULL){
+        printf("Undeflow\n");
+    } else if (head->next == NULL){
+        head = NULL;
+    } else {
+        struct Node* cur = head;
+        while(cur->next->next != NULL) cur = cur->next;
+        cur->next = NULL;
+    }
+};
 
-// };
-
-// * function to update a node's value
-// void update(struct Node* head,int old_value,int new_value){
-    
-// };
-
-// * function to delete a node by given value
-// void deleteEnd;
-
-// * function to delete the head node
 void deleteStart(){
     if (head != NULL){
         head = head->next;
     } else {
-        printf("\nUnderflow : no element to delete");
+        printf("\nUnderflow");
     }
 };
 
-// * function to delete node at given position
-// void deleteAt;
+void deleteAt(int at){
+    if (head == NULL){
+        printf("not enough items\n");
+        return;
+    } else if (at == 1){
+        head = head->next;
+        return;
+    }
+    struct Node* cur = head;
+    for (int i = 1; i < at-1; i++){
+        if (cur->next == NULL){
+            printf("Not enough items\n");
+            return;
+        }
+        cur = cur->next;
+    }
+    if (cur->next == NULL){
+        printf("Not enough items\n");
+        return;
+    }
+    cur->next= cur->next->next;
+}
 
-// * function to delete node after given value
-// void deleteAfter;
+void deleteAfter(int val){
+    if (head == NULL){
+        printf("not enough items\n");
+        return;
+    }
+    struct Node* cur = head;
+    while (cur->value != val){
+        if (cur->next == NULL){
+            printf("no such items found\n");
+            return;
+        }
+        cur = cur->next;
+    }
+    if (cur->next == NULL){
+        printf("not enough items\n");
+        return;
+    }
+    cur->next = cur->next->next;
+}
 
 
 int main(){
     printf("==========Linked List (Ravish)==========\n");
-    head = createNode(10);
+    head = (struct Node*)malloc(sizeof(struct Node));
+    head = NULL;
+    insertStart(10);print();insertEnd(20);print();
+    insertAt(30,2);print();insertAfter(40,10); 
     print();
-    insertEnd(20);
+    insertStart(50);print();
+    deleteStart();print();deleteEnd();print();
+    deleteAt(2);print();deleteAfter(10);
     print();
-    insertStart(0);
+    update(10,30);
     print();
-    deleteStart();
-    print();
+    if (search(10)){
+        printf("10 found in list\n");
+    } else {
+        printf("10 not found in list\n");
+    }
     return 0;
 }

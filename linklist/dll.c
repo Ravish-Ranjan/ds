@@ -29,12 +29,10 @@ struct Node* createNode(int val){
 
 void insertStart(int value){
     struct Node* newNode = createNode(value);
-    newNode->next = head;
-    if (newNode->next == NULL){
-        head = newNode;
-        return;
+    if (head != NULL){
+        newNode->next = head;
+        head->prev = newNode;
     }
-    head->prev = newNode;
     head = newNode;
 }
 
@@ -58,9 +56,8 @@ void deleteStart(){
         return;
     } 
     struct Node* next = head->next;
-    head = head->next;
-    if (next != NULL)
-        next->prev = NULL;
+    head = next;
+    if (head != NULL) head->prev = NULL;
 }
 
 void deleteEnd(){
@@ -73,24 +70,37 @@ void deleteEnd(){
         return;
     }
     struct Node* cur = head;
-    while(cur->next != NULL)
+    while(cur->next->next != NULL) cur = cur->next;
+    cur->next = NULL;
+}
+
+int search(int value){
+    if (head == NULL) {
+        printf("Not enough items\n");
+        return 0;
+    }
+    struct Node* cur = head;
+    while (cur != NULL){
+        if (cur->value == value) return 1;
         cur = cur->next;
-    struct Node* prev = cur->prev;
-    if (prev != NULL)
-        prev->next = NULL;
+    }
+    return 0;
 }
 
 int main(){
     printf("==========Doubly Linked List (Ravish)=========\n");
-    head = createNode(10);
+    head = (struct Node*)malloc(sizeof(struct Node));
+    head = NULL;
+    insertStart(10);insertStart(20);
     print();
-    insertStart(20);
+    insertEnd(30);insertEnd(40);
     print();
-    insertEnd(30);
-    print();
-    deleteStart();
-    print();
-    deleteEnd();
-    print();
+    deleteStart();print();
+    deleteEnd();print();
+    if (search(30)){
+        printf("30 found in linked list\n");
+    } else {
+        printf("30 not found in linked list\n");
+    }
     return 0;
 }
