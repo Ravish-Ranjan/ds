@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #define MAX 20
 
 struct Queue {
     int arr[MAX];
-    int front;
-    int rear;
+    int front,rear;
 };
 
 struct Queue* q;
@@ -48,7 +46,7 @@ int isFull(){
     return size() == MAX;
 }
 
-void enqueue(int value) {
+void enque(int value) {
     if (isFull()) {
         printf("Overflow\n");
         return;
@@ -60,7 +58,7 @@ void enqueue(int value) {
     q->arr[q->rear] = value;
 }
 
-int dequeue() {
+int deque() {
     if (isEmpty()) {
         printf("Underflow\n");
         return -1;
@@ -81,14 +79,14 @@ int main() {
     q->rear = -1;
 
     print();
-    enqueue(10); enqueue(20); print();
-    enqueue(30); enqueue(40); print();
+    enque(10); enque(20); print();
+    enque(30); enque(40); print();
 
-    dequeue(); dequeue(); print();
-    dequeue(); dequeue(); print();
+    deque(); deque(); print();
+    deque(); deque(); print();
 
-    dequeue();
-    enqueue(100); enqueue(200); print();
+    deque();
+    enque(100); enque(200); print();
 
     printf("Front: %d\n", front());
     printf("Rear: %d\n", rear());

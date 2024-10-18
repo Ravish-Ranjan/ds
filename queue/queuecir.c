@@ -21,8 +21,7 @@ struct Node* createNode(int value){
 }
 
 int isEmpty(){
-    if (q->front == NULL)
-        return 1;
+    if (q->front == NULL) return 1;
     return 0;
 };
 
@@ -62,10 +61,10 @@ int deque(){
     if (q->front == q->rear){
         q->front = NULL;
         q->rear = NULL;
-        return temp;
+    } else {
+        q->rear->next = q->rear->next->next;
+        q->front = q->rear->next->next;
     }
-    q->rear->next = q->rear->next->next;
-    q->front = q->rear->next->next;
     return temp;
 };
 

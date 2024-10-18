@@ -2,8 +2,7 @@
 #include <stdlib.h>
 
 struct Node{
-    int value;
-    struct Node* next;
+    int value; struct Node* next;
 };
 
 struct Queue{
@@ -36,7 +35,7 @@ void print(){
     printf("<->NULL\n");
 }
 
-void enqueue(int value){
+void enque(int value){
     struct Node* newNode = createNode(value);
     if (isEmpty()){
         q->front = newNode;
@@ -47,7 +46,7 @@ void enqueue(int value){
     }
 }
 
-int dequeue(){
+int deque(){
     if (isEmpty()){
         printf("Underflow\n");
         return -1;
@@ -91,14 +90,14 @@ int main(){
     q->front = NULL;
     q->rear = NULL;
     print();
-    enqueue(10);enqueue(20);print();
-    enqueue(30);enqueue(40);
+    enque(10);enque(20);print();
+    enque(30);enque(40);
     print();
-    dequeue();dequeue();print();
-    dequeue();dequeue();
+    deque();deque();print();
+    deque();deque();
     print();
-    dequeue();
-    enqueue(100);enqueue(200);
+    deque();
+    enque(100);enque(200);
     print();
     printf("Front : %d\n",front());
     printf("Rear : %d\n",rear());

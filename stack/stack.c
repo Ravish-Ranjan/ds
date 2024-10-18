@@ -35,22 +35,22 @@ void push(int val){
     stack->top = newNode;
 }
 
-int pop(){
-    if (stack->top == NULL){
-        printf("Underflow\n");
-        return -1;
-    }
-    int temp = stack->top->value;
-    stack->top = stack->top->next;
-    return temp;
-}
-
 int peak(){
     if (stack->top == NULL){
         printf("Empty Stack\n");
         return -1;
     }
     return stack->top->value;
+}
+
+int pop(){
+    if (stack->top == NULL){
+        printf("Underflow\n");
+        return -1;
+    }
+    int temp = peak();
+    stack->top = stack->top->next;
+    return temp;
 }
 
 int size(){
