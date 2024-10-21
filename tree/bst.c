@@ -1,14 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Definition of the structure for a BST node
 struct Node {
     int data;
     struct Node* left;
     struct Node* right;
 };
 
-// Function to create a new node
 struct Node* createNode(int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -16,50 +14,33 @@ struct Node* createNode(int data) {
     return newNode;
 }
 
-// Insertion function
 struct Node* insert(struct Node* root, int data) {
-    // If the tree is empty, create a new node
-    if (root == NULL) {
-        return createNode(data);
-    }
-
-    // Otherwise, recursively insert data
+    if (root == NULL) return createNode(data);
     if (data < root->data) {
         root->left = insert(root->left, data);
     } else if (data > root->data) {
         root->right = insert(root->right, data);
     }
-
     return root;
 }
 
-// Helper function to find the minimum value node in the right subtree
 struct Node* minValueNode(struct Node* node) {
     struct Node* current = node;
-    
-    // Find the leftmost leaf
     while (current && current->left != NULL) {
         current = current->left;
     }
     return current;
 }
 
-// Deletion function
 struct Node* deleteNode(struct Node* root, int data) {
-    // Base case: if the tree is empty
     if (root == NULL) {
         return root;
     }
-
-    // Recursively find the node to delete
     if (data < root->data) {
         root->left = deleteNode(root->left, data);
     } else if (data > root->data) {
         root->right = deleteNode(root->right, data);
     } else {
-        // Node to be deleted found
-
-        // Case 1: Node with only one child or no child
         if (root->left == NULL) {
             struct Node* temp = root->right;
             free(root);
@@ -70,35 +51,22 @@ struct Node* deleteNode(struct Node* root, int data) {
             return temp;
         }
 
-        // Case 2: Node with two children
         struct Node* temp = minValueNode(root->right);
 
-        // Copy the inorder successor's value to this node
         root->data = temp->data;
-
-        // Delete the inorder successor
         root->right = deleteNode(root->right, temp->data);
     }
     return root;
 }
 
-// Search function
 struct Node* search(struct Node* root, int data) {
-    // Base cases: root is null or key is present at root
-    if (root == NULL || root->data == data) {
-        return root;
-    }
-
-    // Key is greater than root's key
+    if (root == NULL || root->data == data) return root;
     if (data > root->data) {
         return search(root->right, data);
     }
-
-    // Key is smaller than root's key
     return search(root->left, data);
 }
 
-// Inorder traversal function to print the tree in sorted order
 void inorder(struct Node* root) {
     if (root != NULL) {
         inorder(root->left);
@@ -107,26 +75,15 @@ void inorder(struct Node* root) {
     }
 }
 
-// Function to print the tree in a structured format
 void printTree(struct Node* root, int space) {
     if (root == NULL) {
         return;
     }
-
-    // Increase distance between levels
     space += 10;
-
-    // Process right child first
     printTree(root->right, space);
-
-    // Print current node after space count
     printf("\n");
-    for (int i = 10; i < space; i++) {
-        printf(" ");
-    }
+    for (int i = 10; i < space; i++) printf(" ");
     printf("%d\n", root->data);
-
-    // Process left child
     printTree(root->left, space);
 }
 
