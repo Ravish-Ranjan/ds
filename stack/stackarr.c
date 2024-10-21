@@ -18,8 +18,12 @@ void print(){
     printf("\n");
 }
 
+int size(){
+    return stack->top + 1;
+}
+
 int peak(){
-    if (stack->top == -1){
+    if (aize() == 0){
         printf("Empty stack\n");
         return -1;
     }
@@ -27,7 +31,7 @@ int peak(){
 }
 
 void push(int value){
-    if (stack->top == MAX-1){
+    if (size() == MAX){
         printf("Overflow\n");
         return;
     }
@@ -36,7 +40,7 @@ void push(int value){
 }
 
 int pop(){
-    if (stack->top == -1){
+    if (size() == 0){
         printf("Underflow\n");
         return -1;
     }
@@ -46,13 +50,8 @@ int pop(){
 }
 
 int isEmpty(){
-    if (stack->top == -1)
-        return 1;
+    if (size() == 0) return 1;
     return 0;
-}
-
-int size(){
-    return stack->top + 1;
 }
 
 int main(){
