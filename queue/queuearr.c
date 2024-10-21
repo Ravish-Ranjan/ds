@@ -1,97 +1,90 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 20
+
+#define MAX 5
 
 struct Queue {
-    int arr[MAX];
-    int front,rear;
+    int items[MAX];
+    int front;
+    int rear;
 };
 
 struct Queue* q;
 
-void print() {
-    printf("Queue: ");
-    if (q->front == -1) {
-        printf("NULL\n");
-        return;
-    }
-    int i = q->front;
-    do {
-        printf("<->%d", q->arr[i]);
-        i = (i + 1) % MAX;
-    } while (i != (q->rear + 1) % MAX);
-    printf("<->NULL\n");
+struct Queue* createQueue() {
+    struct Queue* queue = (struct Queue*) malloc(sizeof(struct Queue));
+    queue->front = -1;
+    queue->rear = -1;
+    return queue;
 }
 
-int size() {
+int size(){
     if (q->front == -1) return 0;
-    return (q->rear - q->front + MAX) % MAX + 1;
+    return q->rear - q->front + 1;
 }
 
-int front() {
-    if (q->front != -1) return q->arr[q->front];
-    return -1;
-}
-
-int rear() {
-    if (q->rear != -1) return q->arr[q->rear];
-    return -1;
-}
-
-int isEmpty(){
-    return size() == 0;
-}
-
-int isFull(){
+int isFull() {
     return size() == MAX;
 }
 
+int isEmpty() {
+    return size() == 0;
+}
+
+int front(){
+    if (q->front == -1) return -1;
+    return q->items[q->front];
+}
+
+int rear(){
+    if (q->front == -1) return -1;
+    return q->items[q->rear];
+}
+
 void enque(int value) {
-    if (isFull()) {
-        printf("Overflow\n");
-        return;
+    if (isFull(q)) {
+        printf("Queue is full!\n");
+    } else {
+        if (q->front == -1) {
+            q->front = 0;
+        }
+        q->rear++;
+        q->items[q->rear] = value;
     }
-    if (q->front == -1) {
-        q->front = 0;
-    }
-    q->rear = (q->rear + 1) % MAX;
-    q->arr[q->rear] = value;
 }
 
 int deque() {
+    int value;
     if (isEmpty()) {
-        printf("Underflow\n");
+        printf("Queue is empty!\n");
         return -1;
-    }
-    int temp = front();
-    if (q->front == q->rear) {
-        q->front = q->rear = -1;
     } else {
-        q->front = (q->front + 1) % MAX;
+        for (int i = 0; i < q->rear; i++){
+            q->items[i] = q->items[i+1];
+        }
+        q->rear--;
     }
-    return temp;
+}
+
+void print() {
+    printf("Queue : ");
+    if (q->front != -1){
+        for (int i = q->front; i <= q->rear; i++) {
+            printf("%d ", q->items[i]);
+        }
+    }
+    printf("\n");
 }
 
 int main() {
     printf("----------Queue Arr Ravish----------\n");
     q = (struct Queue*)malloc(sizeof(struct Queue));
-    q->front = -1;
-    q->rear = -1;
-
+    q->front = q->rear = -1;
+    print();enque(10);enque(20);enque(30);enque(40);enque(50);
+    print();enque(60);
+    deque();print();deque();print();deque();print();
+    enque(60);enque(70);
     print();
-    enque(10); enque(20); print();
-    enque(30); enque(40); print();
-
-    deque(); deque(); print();
-    deque(); deque(); print();
-
-    deque();
-    enque(100); enque(200); print();
-
-    printf("Front: %d\n", front());
-    printf("Rear: %d\n", rear());
-    printf("Size: %d\n", size());
-
-    free(q);
+    
     return 0;
 }
