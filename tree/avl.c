@@ -162,13 +162,13 @@ int main() {
     root = insert(root, 50);
     root = insert(root, 25);
 
-    printf("Pre-order traversal of the constructed AVL tree is:\n");
+    printf("Traversal of the constructed AVL tree is:\n");
     printTree(root,0);
     printf("\n");
 
     root = deleteNode(root, 30);
 
-    printf("Pre-order traversal after deletion of 30:\n");
+    printf("Traversal after deletion of 30:\n");
     printTree(root,0);
     printf("\n");
 
