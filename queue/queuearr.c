@@ -35,7 +35,7 @@ int rear(){
 }
 
 void enque(int value) {
-    if (isFull(q)) {
+    if (isFull()) {
         printf("Queue is full!\n");
     } else {
         if (q->front == -1) {
