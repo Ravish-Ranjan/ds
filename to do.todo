@@ -1,12 +1,13 @@
 :DS Assignment
-☐ linked list
-☐ doubly linked list
-☐ circular linked list
-☐ stack ll
-☐ stack array
-☐ queue ll
-☐ queue array
-☐ queue circular array
-☐ dequeue
+✔ linked list @done (10/22/2024, 1:42:04 PM)
+✔ doubly linked list @done (10/22/2024, 1:42:05 PM)
+✔ circular linked list @done (10/22/2024, 1:42:05 PM)
+✔ stack ll @done (10/22/2024, 1:42:06 PM)
+✔ stack array @done (10/22/2024, 1:42:06 PM)
+✔ queue ll @done (10/22/2024, 1:42:07 PM)
+✔ queue array @done (10/22/2024, 1:42:07 PM)
+✔ queue circular array @done (10/22/2024, 1:42:08 PM)
+✘ dequeue @cancelled (10/22/2024, 1:42:27 PM)
 ☐ bst
-☐ notation
+☐ avl
+✘ notation @cancelled (10/22/2024, 1:42:25 PM)
