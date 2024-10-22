@@ -11,13 +11,6 @@ struct Queue {
 
 struct Queue* q;
 
-struct Queue* createQueue() {
-    struct Queue* queue = (struct Queue*) malloc(sizeof(struct Queue));
-    queue->front = -1;
-    queue->rear = -1;
-    return queue;
-}
-
 int size(){
     if (q->front == -1) return 0;
     return q->rear - q->front + 1;
@@ -42,7 +35,7 @@ int rear(){
 }
 
 void enque(int value) {
-    if (isFull(q)) {
+    if (isFull()) {
         printf("Queue is full!\n");
     } else {
         if (q->front == -1) {
