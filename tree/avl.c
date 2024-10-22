@@ -11,8 +11,7 @@ struct Node {
 struct Node* root;
 
 int height(struct Node *N) {
-    if (N == NULL)
-        return 0;
+    if (N == NULL) return 0;
     return N->height;
 }
 
@@ -143,6 +142,16 @@ void preOrder(struct Node *root) {
     }
 }
 
+void printTree(struct Node* root, int space) {
+    if (root == NULL) return;
+    space += 10;
+    printTree(root->right, space);
+    printf("\n");
+    for (int i = 10; i < space; i++) printf(" ");
+    printf("%d\n", root->key);
+    printTree(root->left, space);
+}
+
 int main() {
     root = NULL;
 
@@ -154,13 +163,13 @@ int main() {
     root = insert(root, 25);
 
     printf("Pre-order traversal of the constructed AVL tree is:\n");
-    preOrder(root);
+    printTree(root,0);
     printf("\n");
 
     root = deleteNode(root, 30);
 
     printf("Pre-order traversal after deletion of 30:\n");
-    preOrder(root);
+    printTree(root,0);
     printf("\n");
 
     return 0;
