@@ -34,6 +34,7 @@ struct Node* minValueNode(struct Node* node) {
 
 struct Node* deleteNode(struct Node* root, int data) {
     if (root == NULL) {
+        printf("%d not found",data);
         return root;
     }
     if (data < root->data) {
@@ -94,7 +95,6 @@ int main() {
     do {
         printf("\n1. Insert\n2. Delete\n3. Search\n4. Inorder Traversal\n5. Print Tree Structure\n6. Exit\nEnter your choice: ");
         scanf("%d", &choice);
-
         switch (choice) {
             case 1:
                 printf("Enter value to insert: ");
@@ -102,6 +102,9 @@ int main() {
                 root = insert(root, value);
                 break;
             case 2:
+                printf("Inorder traversal of the tree: ");
+                inorder(root);
+                printf("\n");
                 printf("Enter value to delete: ");
                 scanf("%d", &value);
                 root = deleteNode(root, value);
