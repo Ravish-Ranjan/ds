@@ -1,13 +1,24 @@
 :DS Assignment
+☐ 
 ✔ linked list @done (10/22/2024, 1:42:04 PM)
 ✔ doubly linked list @done (10/22/2024, 1:42:05 PM)
 ✔ circular linked list @done (10/22/2024, 1:42:05 PM)
 ✔ stack ll @done (10/22/2024, 1:42:06 PM)
 ✔ stack array @done (10/22/2024, 1:42:06 PM)
 ✔ queue ll @done (10/22/2024, 1:42:07 PM)
-✔ queue array @done (10/22/2024, 1:42:07 PM)
+✘ queue circular ll @cancelled (10/23/2024, 3:10:20 PM)
+✘ queue array @cancelled (10/23/2024, 3:10:10 PM)
 ✔ queue circular array @done (10/22/2024, 1:42:08 PM)
 ✘ dequeue @cancelled (10/22/2024, 1:42:27 PM)
-✔ bst @done (10/22/2024, 3:27:23 PM)
-✔ avl @done (10/22/2024, 3:51:17 PM)
+☐ bst
+☐ avl
 ✘ notation @cancelled (10/22/2024, 1:42:25 PM)
+
+✔ 1d traversal @done (10/23/2024, 5:27:29 PM)
+✔ 1d insertion @done (10/23/2024, 5:27:33 PM)
+✔ 1d searching @done (10/23/2024, 10:05:22 PM)
+✔ 1d deletion0 @done (10/23/2024, 10:14:03 PM)f
+✔ binary searching @done (10/23/2024, 5:27:42 PM)
+✔ linear searching @done (10/23/2024, 5:27:43 PM)
+☐ 2d insertion
+✔ 2d searching @done (10/23/2024, 10:05:32 PM)

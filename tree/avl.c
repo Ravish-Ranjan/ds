@@ -153,21 +153,31 @@ void printTree(struct Node* root, int space) {
 }
 
 int main() {
+    printf("----------AVL Tree Ravish----------\n");
     root = NULL;
 
+    printf("inserting 10,20\n");
     root = insert(root, 10);
     root = insert(root, 20);
+    printTree(root,0);
+    printf("\n");
+    printf("inserting 30,40\n");
     root = insert(root, 30);
     root = insert(root, 40);
+    printTree(root,0);
+    printf("\n");
+    printf("inserting 50,25\n");
     root = insert(root, 50);
     root = insert(root, 25);
-
-    printf("Traversal of the constructed AVL tree is:\n");
     printTree(root,0);
     printf("\n");
 
     root = deleteNode(root, 30);
+    printf("Traversal after deletion of 30:\n");
+    printTree(root,0);
+    printf("\n");
 
+    root = deleteNode(root, 40);
     printf("Traversal after deletion of 30:\n");
     printTree(root,0);
     printf("\n");

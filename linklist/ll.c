@@ -173,15 +173,26 @@ int main(){
     printf("==========Linked List (Ravish)==========\n");
     head = (struct Node*)malloc(sizeof(struct Node));
     head = NULL;
-    insertStart(10);print();insertEnd(20);print();
-    insertAt(30,2);print();insertAfter(40,10); 
-    print();
-    insertStart(50);print();
-    deleteStart();print();deleteEnd();print();
-    deleteAt(2);print();deleteAfter(10);
-    print();
+    printf("Insert start 10,20\n");
+    insertStart(10);print();insertStart(20);print();
+    printf("\nInsert end 30,40\n");
+    insertEnd(30);print();insertEnd(40);print();
+    printf("\nInsert insert at 3nd 50,60\n");
+    insertAt(50,2);print();insertAt(60,2);print();
+    printf("\nInsert after 40 70,80\n");
+    insertAfter(70,40);print();insertAfter(80,40);print();
+    printf("\ndelete start\n");
+    deleteStart();print();
+    printf("\ndelete end\n");
+    deleteEnd();print();
+    printf("\ndelete at 2\n");
+    deleteAt(2);print();
+    printf("\ndelete after 10\n");
+    deleteAfter(10);print();
+    printf("\nupdate 10 to 30\n");
+    
     update(10,30);
-    print();
+    
     if (search(10)){
         printf("10 found in list\n");
     } else {

@@ -91,12 +91,31 @@ int main(){
     printf("==========Doubly Linked List (Ravish)=========\n");
     head = (struct Node*)malloc(sizeof(struct Node));
     head = NULL;
-    insertStart(10);insertStart(20);
-    print();
-    insertEnd(30);insertEnd(40);
-    print();
+    printf("insert start 10\n");
+    insertStart(10);print();
+    printf("insert start 10\n");
+    insertStart(10);print();
+    printf("insert start 20\n");
+    insertStart(20);print();
+    printf("insert start 20\n");
+    insertStart(20);print();
+    printf("insert end 30\n");
+    insertEnd(30);print();
+    printf("insert end 30\n");
+    insertEnd(30);print();
+    printf("insert end 40\n");
+    insertEnd(40);print();
+    printf("insert end 40\n");
+    insertEnd(40);print();
+    printf("delete start\n");
     deleteStart();print();
+    printf("delete start\n");
+    deleteStart();print();
+    printf("delete end\n");
     deleteEnd();print();
+    printf("delete end\n");
+    deleteEnd();print();
+    printf("searching 30\n");
     if (search(30)){
         printf("30 found in linked list\n");
     } else {

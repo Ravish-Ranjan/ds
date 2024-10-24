@@ -23,7 +23,7 @@ int size(){
 }
 
 int peak(){
-    if (aize() == 0){
+    if (size() == 0){
         printf("Empty stack\n");
         return -1;
     }
@@ -59,13 +59,22 @@ int main(){
     stack = (struct Stack*)malloc(sizeof(struct Stack));
     stack->top = -1;
     print();
-    push(10);push(20);print();push(30);push(40);
-    print();
-    pop();pop();print();pop();pop();
-    print();
+    printf("pushing 10,20\n");
+    push(10);push(20);print();
+    printf("\npushing 30,40\n");
+    push(30);push(40);print();
+    printf("\npopping twice\n");
+    pop();pop();print();
+    printf("\npopping twice\n");
+    pop();pop();print();
+    printf("\npopping\n");
     pop();
-    push(10);push(20);push(30);push(40);push(50);
-    push(60);
+    printf("\npushing 10,20\n");
+    push(10);push(20);
+    printf("\npushing 30,40\n");
+    push(30);push(40);
+    printf("\npushing 50,60\n");
+    push(50);push(60);
     printf("Top element is : %d\n",peak());
     print();
     printf("Size of stack is : %d\n",size());

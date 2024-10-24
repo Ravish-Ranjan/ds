@@ -79,13 +79,19 @@ int main() {
     q->rear = -1;
 
     print();
+    printf("\nenqueue 10,20\n");
     enque(10); enque(20); print();
+    printf("\nenqueue 40,50\n");
     enque(30); enque(40); print();
 
+    printf("\ndequeue twice\n");
     deque(); deque(); print();
+    printf("\ndequeue twice\n");
     deque(); deque(); print();
 
+    printf("\ndequeue\n");
     deque();
+    printf("\nenqueue 100,200\n");
     enque(100); enque(200); print();
 
     printf("Front: %d\n", front());

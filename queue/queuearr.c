@@ -73,9 +73,14 @@ int main() {
     printf("----------Queue Arr Ravish----------\n");
     q = (struct Queue*)malloc(sizeof(struct Queue));
     q->front = q->rear = -1;
-    print();enque(10);enque(20);enque(30);enque(40);enque(50);
+    print();
+    printf("\nenqueue 10,20,30,40,50\n");
+    enque(10);enque(20);enque(30);enque(40);enque(50);
+    printf("\nenqueue 60\n");
     print();enque(60);
+    printf("\ndequeue thrice\n");
     deque();print();deque();print();deque();print();
+    printf("\nenqueue 60,70\n");
     enque(60);enque(70);
     print();
     

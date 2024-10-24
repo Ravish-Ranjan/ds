@@ -88,7 +88,7 @@ int search(int val){
 }
 
 int main(){
-    printf("----------Circular LL (ravish)----------\n");
+    printf("----------Circular LL (DIVYASNSH)----------\n");
     cursor = NULL;
     print();
     insertCursor(10);insertCursor(20);print();

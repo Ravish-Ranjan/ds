@@ -127,7 +127,7 @@ int main() {
                 printf("\n");
                 break;
             case 6:
-                printf("Exiting...\n");
+                printf("Exiting...Ravish\n");
                 break;
             default:
                 printf("Invalid choice! Please try again.\n");
