@@ -29,6 +29,7 @@ void printArray(int arr[], int size) {
 }
 
 int main() {
+    printf("----------Selection Sort ravish----------\n");
     int arr[max],size;
     printf("Enter the size of the arr (<=20) : ");
     scanf("%d",&size);

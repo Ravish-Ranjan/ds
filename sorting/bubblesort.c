@@ -19,6 +19,10 @@ int main(){
     int size;
     printf("Enter the size of the array (<=20): ");
     scanf("%d",&size);
+    if (size > MAX){
+        printf("Array size extended\n");
+        return 0;
+    }
     for (int i = 0;i < size;i++){
         printf("arr[%d] : ",i);
         scanf("%d",&arr[i]);

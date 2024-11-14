@@ -46,6 +46,7 @@ void printArray(int arr[], int size) {
 }
 
 int main() {
+    printf("----------Merge Sort ravish----------\n");
     int arr[max],size;
     printf("Enter the size of the arr (<=20) : ");
     scanf("%d",&size);
