@@ -153,7 +153,7 @@ void printTree(struct Node* root, int space) {
 }
 
 int main() {
-    printf("----------AVL Tree Ravish----------\n");
+    printf("----------AVL ravish----------\n");
     root = NULL;
 
     printf("inserting 10,20\n");
